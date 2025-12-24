@@ -462,8 +462,132 @@ function debounce(func, wait) {
 // INITIALIZATION
 // ============================================
 
+// ============================================
+// CURRICULUM ACCORDION
+// ============================================
+
 document.addEventListener('DOMContentLoaded', () => {
     console.log('HAVY 보컬 웹사이트가 로드되었습니다.');
     
-    // Add any additional initialization code here
+    // Curriculum accordion functionality
+    const curriculumButtons = document.querySelectorAll('.curriculum-header-btn');
+    
+    curriculumButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const targetId = button.getAttribute('data-target');
+            const curriculumItem = button.closest('.curriculum-item');
+            const isActive = curriculumItem.classList.contains('active');
+            
+            // Close all other items
+            document.querySelectorAll('.curriculum-item').forEach(item => {
+                if (item !== curriculumItem) {
+                    item.classList.remove('active');
+                }
+            });
+            
+            // Toggle current item
+            if (isActive) {
+                curriculumItem.classList.remove('active');
+            } else {
+                curriculumItem.classList.add('active');
+            }
+        });
+    });
+    
+    // FAQ accordion functionality
+    const faqButtons = document.querySelectorAll('.faq-header-btn');
+    
+    faqButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const targetId = button.getAttribute('data-target');
+            const faqItem = button.closest('.faq-item');
+            const isActive = faqItem.classList.contains('active');
+            
+            // Close all other items
+            document.querySelectorAll('.faq-item').forEach(item => {
+                if (item !== faqItem) {
+                    item.classList.remove('active');
+                }
+            });
+            
+            // Toggle current item
+            if (isActive) {
+                faqItem.classList.remove('active');
+            } else {
+                faqItem.classList.add('active');
+            }
+        });
+    });
+    
+    // Inquiry form submission
+    const inquiryForm = document.getElementById('inquiryForm');
+    if (inquiryForm) {
+        inquiryForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const formData = new FormData(inquiryForm);
+            const data = Object.fromEntries(formData);
+            
+            // Log the data (in a real application, you would send this to a server)
+            console.log('Inquiry submitted:', data);
+            
+            // Show success message
+            const submitBtn = inquiryForm.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = '문의가 접수되었습니다!';
+            submitBtn.disabled = true;
+            submitBtn.style.background = '#22c55e';
+            
+            // Reset form
+            inquiryForm.reset();
+            
+            // Reset button after 3 seconds
+            setTimeout(() => {
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+                submitBtn.style.background = '';
+            }, 3000);
+        });
+    }
+    
+    // Kakao button click handler
+    const kakaoBtn = document.getElementById('kakaoBtn');
+    if (kakaoBtn) {
+        kakaoBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            // 카카오톡 링크를 여기에 추가하세요
+            // 예: window.open('카카오톡 링크', '_blank');
+            alert('카카오톡 상담 링크를 추가해주세요.');
+        });
+    }
+    
+    // Top button
+    const topBtn = document.getElementById('topBtn');
+    if (topBtn) {
+        topBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    }
+    
+    // Phone button
+    const phoneBtn = document.getElementById('phoneBtn');
+    if (phoneBtn) {
+        phoneBtn.addEventListener('click', () => {
+            // 전화번호를 여기에 추가하세요
+            window.location.href = 'tel:010-0000-0000';
+        });
+    }
+    
+    // Kakao fixed button
+    const kakaoFixedBtn = document.getElementById('kakaoFixedBtn');
+    if (kakaoFixedBtn) {
+        kakaoFixedBtn.addEventListener('click', () => {
+            // 카카오톡 링크를 여기에 추가하세요
+            // 예: window.open('카카오톡 링크', '_blank');
+            alert('카카오톡 상담 링크를 추가해주세요.');
+        });
+    }
 });
