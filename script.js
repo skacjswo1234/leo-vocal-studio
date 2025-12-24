@@ -555,9 +555,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (kakaoBtn) {
         kakaoBtn.addEventListener('click', (e) => {
             e.preventDefault();
-            // 카카오톡 링크를 여기에 추가하세요
-            // 예: window.open('카카오톡 링크', '_blank');
-            alert('카카오톡 상담 링크를 추가해주세요.');
+            window.open('https://open.kakao.com/o/s5lL3I5h', '_blank', 'noopener,noreferrer');
         });
     }
     
@@ -585,9 +583,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const kakaoFixedBtn = document.getElementById('kakaoFixedBtn');
     if (kakaoFixedBtn) {
         kakaoFixedBtn.addEventListener('click', () => {
-            // 카카오톡 링크를 여기에 추가하세요
-            // 예: window.open('카카오톡 링크', '_blank');
-            alert('카카오톡 상담 링크를 추가해주세요.');
+            window.open('https://open.kakao.com/o/s5lL3I5h', '_blank', 'noopener,noreferrer');
         });
     }
 });
